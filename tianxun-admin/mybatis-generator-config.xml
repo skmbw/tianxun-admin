@@ -9,19 +9,19 @@
 		<property name="suppressDate" value="true"/>
 		<property name="trimStrings" value="true"/>
 		<property name="mainType" value="true"/><!-- 是否使用main方法产生代码 -->
-		<property name="projectPath" value="/home/yinlei/git/tianxun/"/>
+		<property name="projectPath" value="/home/yinlei/git/tianxun-admin/"/>
 		<property name="defaultPackage" value="src/main/java/"/>
 		<!-- jdbc连接配置 -->
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/tianxun_user" userId="root" password="3416763" />
 		
 		<!-- 实体文件的位置 -->
-		<javaModelGenerator targetPackage="com.vteba.tianxun.comment.model" targetProject="tianxun" />
+		<javaModelGenerator targetPackage="com.vteba.tianxun.comment.model" targetProject="tianxun-admin" />
 		
 		<!-- Mapper.xml文件的位置，sql映射文件的位置 -->
-		<sqlMapGenerator targetPackage="com.vteba.tianxun.comment.mapper" targetProject="tianxun" />
+		<sqlMapGenerator targetPackage="com.vteba.tianxun.comment.mapper" targetProject="tianxun-admin" />
 		
 		<!-- Mapper.java文件的位置，也就是DAO接口文件位置 -->
-		<javaClientGenerator targetPackage="com.vteba.tianxun.comment.dao" targetProject="tianxun" type="XMLMAPPER" >
+		<javaClientGenerator targetPackage="com.vteba.tianxun.comment.dao" targetProject="tianxun-admin" type="XMLMAPPER" >
 			<property name="rootInterface" value="com.vteba.tx.jdbc.mybatis.spi.BasicDao"/>
 		</javaClientGenerator>
 	

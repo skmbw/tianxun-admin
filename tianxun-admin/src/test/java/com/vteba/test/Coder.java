@@ -21,7 +21,7 @@ public class Coder {
 //		tableListMap.put("tags", "热门标签");
 		
 	    //项目绝对路径
-		String rootPath = "/home/yinlei/git/tianxun/tianxun/";
+		String rootPath = "/home/yinlei/git/tianxun-admin/tianxun-admin/";
 		CodeBuilder builder = new CodeBuilder(rootPath, TempType.MyBatisBasic);
 		builder.setConfigFilePath("src/main/resources/config.properties")
 		.setSrcPath("src/main/java/")
@@ -42,8 +42,8 @@ public class Coder {
         .setGenService(false)
         .setMybatisShards(false)
         .setMybatisAction(true)
-        .setJsonAction(true)
-        .setOnlyDao(true);//只产生dao
+        .setJsonAction(true);
+        //.setOnlyDao(true);//只产生dao
 		
 		Map<String, List<String>> map = builder.build();
 
