@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.vteba.tianxun.score.dao.ScoreDetailDao" >
+  <resultMap id="scoreDetailResultMap" type="com.vteba.tianxun.score.model.ScoreDetail" >
+    <!--
+      WARNING - 结果集映射，不含Blob字段。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="score_id" property="scoreId" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="INTEGER" />
+    <result column="key" property="key" jdbcType="VARCHAR" />
+    <result column="key_type" property="keyType" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="comment" property="comment" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - 该表所有字段。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    id, score_id, score, key, key_type, create_date, comment
+  </sql>
+  <sql id="model_where_clause" >
+    <!--
+      WARNING - 根据model条件，查询或更新的where语句。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    <where >
+      <trim prefixOverrides="and" >
+        <if test="scoreId != null" >
+          and score_id = #{scoreId,jdbcType=VARCHAR}
+        </if>
+        <if test="score != null" >
+          and score = #{score,jdbcType=INTEGER}
+        </if>
+        <if test="key != null" >
+          and key = #{key,jdbcType=VARCHAR}
+        </if>
+        <if test="keyType != null" >
+          and key_type = #{keyType,jdbcType=VARCHAR}
+        </if>
+        <if test="createDate != null" >
+          and create_date = #{createDate,jdbcType=TIMESTAMP}
+        </if>
+        <if test="comment != null" >
+          and comment = #{comment,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+    <if test="orderBy != null" >
+      order by ${orderBy}
+    </if>
+    <if test="start != null" >
+      limit ${start}, ${pageSize}
+    </if>
+  </sql>
+  <sql id="update_model_where_clause" >
+    <!--
+      WARNING - 根据model条件，更新的where语句。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    <where >
+      <trim prefixOverrides="and" >
+        <if test="params.scoreId != null" >
+          and score_id = #{params.scoreId,jdbcType=VARCHAR}
+        </if>
+        <if test="params.score != null" >
+          and score = #{params.score,jdbcType=INTEGER}
+        </if>
+        <if test="params.key != null" >
+          and key = #{params.key,jdbcType=VARCHAR}
+        </if>
+        <if test="params.keyType != null" >
+          and key_type = #{params.keyType,jdbcType=VARCHAR}
+        </if>
+        <if test="params.createDate != null" >
+          and create_date = #{params.createDate,jdbcType=TIMESTAMP}
+        </if>
+        <if test="params.comment != null" >
+          and comment = #{params.comment,jdbcType=VARCHAR}
+        </if>
+      </trim>
+    </where>
+  </sql>
+  <select id="queryList" resultMap="scoreDetailResultMap" parameterType="com.vteba.tianxun.score.model.ScoreDetail" >
+    <!--
+      WARNING - 根据params所携带条件查询数据。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from score_detail
+    <if test="_parameter != null" >
+      <include refid="model_where_clause" />
+    </if>
+  </select>
+  <select id="pagedList" resultMap="scoreDetailResultMap" parameterType="com.vteba.tianxun.score.model.ScoreDetail" >
+    <!--
+      WARNING - 根据params所携带条件分页查询数据。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from score_detail
+    <if test="_parameter != null" >
+      <include refid="model_where_clause" />
+    </if>
+  </select>
+  <select id="get" resultMap="scoreDetailResultMap" parameterType="java.lang.String" >
+    <!--
+      WARNING - 根据主键查询数据。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from score_detail
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="getForUpdate" resultMap="scoreDetailResultMap" parameterType="java.lang.String" >
+    <!--
+      WARNING - 根据主键查询数据，使用 for update 悲观锁。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from score_detail
+    where id = #{id,jdbcType=VARCHAR} for update
+  </select>
+  <select id="unique" resultMap="scoreDetailResultMap" parameterType="com.vteba.tianxun.score.model.ScoreDetail" >
+    <!--
+      WARNING - 根据params所携带条件查询唯一记录。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from score_detail
+    <if test="_parameter != null" >
+      <include refid="model_where_clause" />
+    </if>
+  </select>
+  <select id="uniqueForUpdate" resultMap="scoreDetailResultMap" parameterType="com.vteba.tianxun.score.model.ScoreDetail" >
+    <!--
+      WARNING - 根据params所携带条件查询唯一记录。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from score_detail
+    <if test="_parameter != null" >
+      <include refid="model_where_clause" />
+    </if>
+     for update
+  </select>
+  <delete id="deleteById" parameterType="java.lang.String" >
+    <!--
+      WARNING - 根据主键删除记录。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    delete from score_detail
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteBulks" parameterType="com.vteba.tianxun.score.model.ScoreDetail" >
+    <!--
+      WARNING - 根据params所携带条件删除数据。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    delete from score_detail
+    <if test="_parameter != null" >
+      <include refid="model_where_clause" />
+    </if>
+  </delete>
+  <insert id="save" parameterType="com.vteba.tianxun.score.model.ScoreDetail" >
+    <!--
+      WARNING - 插入记录，只有非空字段才会插入到数据库。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    insert into score_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="scoreId != null" >
+        score_id,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="key != null" >
+        key,
+      </if>
+      <if test="keyType != null" >
+        key_type,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="scoreId != null" >
+        #{scoreId,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="key != null" >
+        #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="keyType != null" >
+        #{keyType,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countBy" parameterType="com.vteba.tianxun.score.model.ScoreDetail" resultType="java.lang.Integer" >
+    <!--
+      WARNING - 根据params所携带条件计数。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    select count(*) from score_detail
+    <if test="_parameter != null" >
+      <include refid="model_where_clause" />
+    </if>
+  </select>
+  <update id="updateBulks" parameterType="map" >
+    <!--
+      WARNING - 根据params所携带条件更新指定字段。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    update score_detail
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scoreId != null" >
+        score_id = #{record.scoreId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.score != null" >
+        score = #{record.score,jdbcType=INTEGER},
+      </if>
+      <if test="record.key != null" >
+        key = #{record.key,jdbcType=VARCHAR},
+      </if>
+      <if test="record.keyType != null" >
+        key_type = #{record.keyType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createDate != null" >
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.comment != null" >
+        comment = #{record.comment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="update_model_where_clause" />
+    </if>
+  </update>
+  <update id="updateById" parameterType="com.vteba.tianxun.score.model.ScoreDetail" >
+    <!--
+      WARNING - 根据主键更新指定字段的数据。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    update score_detail
+    <set >
+      <if test="scoreId != null" >
+        score_id = #{scoreId,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="key != null" >
+        key = #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="keyType != null" >
+        key_type = #{keyType,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

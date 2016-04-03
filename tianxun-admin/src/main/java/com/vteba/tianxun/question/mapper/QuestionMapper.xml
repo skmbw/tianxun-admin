@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.vteba.tianxun.question.dao.QuestionDao" >
+  <resultMap id="questionResultMap" type="com.vteba.tianxun.question.model.Question" >
+    <!--
+      WARNING - 结果集映射，不含Blob字段。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="summary" property="summary" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="asker" property="asker" jdbcType="VARCHAR" />
+    <result column="asker_name" property="askerName" jdbcType="VARCHAR" />
+    <result column="ask_date" property="askDate" jdbcType="TIMESTAMP" />
+    <result column="answer_date" property="answerDate" jdbcType="TIMESTAMP" />
+    <result column="close_date" property="closeDate" jdbcType="TIMESTAMP" />
+    <result column="solved" property="solved" jdbcType="BIT" />
+    <result column="open" property="open" jdbcType="BIT" />
+    <result column="platform" property="platform" jdbcType="BIT" />
+    <result column="category" property="category" jdbcType="INTEGER" />
+    <result column="category_name" property="categoryName" jdbcType="VARCHAR" />
+    <result column="satisfied_answer_id" property="satisfiedAnswerId" jdbcType="VARCHAR" />
+    <result column="satisfied_user_id" property="satisfiedUserId" jdbcType="VARCHAR" />
+    <result column="satisfied_user_name" property="satisfiedUserName" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - 该表所有字段。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    id, title, content, summary, price, asker, asker_name, ask_date, answer_date, close_date, 
+    solved, open, platform, category, category_name, satisfied_answer_id, satisfied_user_id, 
+    satisfied_user_name, state
+  </sql>
+  <sql id="model_where_clause" >
+    <!--
+      WARNING - 根据model条件，查询或更新的where语句。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    <where >
+      <trim prefixOverrides="and" >
+        <if test="title != null" >
+          and title = #{title,jdbcType=VARCHAR}
+        </if>
+        <if test="content != null" >
+          and content = #{content,jdbcType=VARCHAR}
+        </if>
+        <if test="summary != null" >
+          and summary = #{summary,jdbcType=VARCHAR}
+        </if>
+        <if test="price != null" >
+          and price = #{price,jdbcType=DECIMAL}
+        </if>
+        <if test="asker != null" >
+          and asker = #{asker,jdbcType=VARCHAR}
+        </if>
+        <if test="askerName != null" >
+          and asker_name = #{askerName,jdbcType=VARCHAR}
+        </if>
+        <if test="askDate != null" >
+          and ask_date = #{askDate,jdbcType=TIMESTAMP}
+        </if>
+        <if test="answerDate != null" >
+          and answer_date = #{answerDate,jdbcType=TIMESTAMP}
+        </if>
+        <if test="closeDate != null" >
+          and close_date = #{closeDate,jdbcType=TIMESTAMP}
+        </if>
+        <if test="solved != null" >
+          and solved = #{solved,jdbcType=BIT}
+        </if>
+        <if test="open != null" >
+          and open = #{open,jdbcType=BIT}
+        </if>
+        <if test="platform != null" >
+          and platform = #{platform,jdbcType=BIT}
+        </if>
+        <if test="category != null" >
+          and category = #{category,jdbcType=INTEGER}
+        </if>
+        <if test="categoryName != null" >
+          and category_name = #{categoryName,jdbcType=VARCHAR}
+        </if>
+        <if test="satisfiedAnswerId != null" >
+          and satisfied_answer_id = #{satisfiedAnswerId,jdbcType=VARCHAR}
+        </if>
+        <if test="satisfiedUserId != null" >
+          and satisfied_user_id = #{satisfiedUserId,jdbcType=VARCHAR}
+        </if>
+        <if test="satisfiedUserName != null" >
+          and satisfied_user_name = #{satisfiedUserName,jdbcType=VARCHAR}
+        </if>
+        <if test="state != null" >
+          and state = #{state,jdbcType=INTEGER}
+        </if>
+      </trim>
+    </where>
+    <if test="orderBy != null" >
+      order by ${orderBy}
+    </if>
+    <if test="start != null" >
+      limit ${start}, ${pageSize}
+    </if>
+  </sql>
+  <sql id="update_model_where_clause" >
+    <!--
+      WARNING - 根据model条件，更新的where语句。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    <where >
+      <trim prefixOverrides="and" >
+        <if test="params.title != null" >
+          and title = #{params.title,jdbcType=VARCHAR}
+        </if>
+        <if test="params.content != null" >
+          and content = #{params.content,jdbcType=VARCHAR}
+        </if>
+        <if test="params.summary != null" >
+          and summary = #{params.summary,jdbcType=VARCHAR}
+        </if>
+        <if test="params.price != null" >
+          and price = #{params.price,jdbcType=DECIMAL}
+        </if>
+        <if test="params.asker != null" >
+          and asker = #{params.asker,jdbcType=VARCHAR}
+        </if>
+        <if test="params.askerName != null" >
+          and asker_name = #{params.askerName,jdbcType=VARCHAR}
+        </if>
+        <if test="params.askDate != null" >
+          and ask_date = #{params.askDate,jdbcType=TIMESTAMP}
+        </if>
+        <if test="params.answerDate != null" >
+          and answer_date = #{params.answerDate,jdbcType=TIMESTAMP}
+        </if>
+        <if test="params.closeDate != null" >
+          and close_date = #{params.closeDate,jdbcType=TIMESTAMP}
+        </if>
+        <if test="params.solved != null" >
+          and solved = #{params.solved,jdbcType=BIT}
+        </if>
+        <if test="params.open != null" >
+          and open = #{params.open,jdbcType=BIT}
+        </if>
+        <if test="params.platform != null" >
+          and platform = #{params.platform,jdbcType=BIT}
+        </if>
+        <if test="params.category != null" >
+          and category = #{params.category,jdbcType=INTEGER}
+        </if>
+        <if test="params.categoryName != null" >
+          and category_name = #{params.categoryName,jdbcType=VARCHAR}
+        </if>
+        <if test="params.satisfiedAnswerId != null" >
+          and satisfied_answer_id = #{params.satisfiedAnswerId,jdbcType=VARCHAR}
+        </if>
+        <if test="params.satisfiedUserId != null" >
+          and satisfied_user_id = #{params.satisfiedUserId,jdbcType=VARCHAR}
+        </if>
+        <if test="params.satisfiedUserName != null" >
+          and satisfied_user_name = #{params.satisfiedUserName,jdbcType=VARCHAR}
+        </if>
+        <if test="params.state != null" >
+          and state = #{params.state,jdbcType=INTEGER}
+        </if>
+      </trim>
+    </where>
+  </sql>
+  <select id="queryList" resultMap="questionResultMap" parameterType="com.vteba.tianxun.question.model.Question" >
+    <!--
+      WARNING - 根据params所携带条件查询数据。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from question
+    <if test="_parameter != null" >
+      <include refid="model_where_clause" />
+    </if>
+  </select>
+  <select id="pagedList" resultMap="questionResultMap" parameterType="com.vteba.tianxun.question.model.Question" >
+    <!--
+      WARNING - 根据params所携带条件分页查询数据。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from question
+    <if test="_parameter != null" >
+      <include refid="model_where_clause" />
+    </if>
+  </select>
+  <select id="get" resultMap="questionResultMap" parameterType="java.lang.String" >
+    <!--
+      WARNING - 根据主键查询数据。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from question
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="getForUpdate" resultMap="questionResultMap" parameterType="java.lang.String" >
+    <!--
+      WARNING - 根据主键查询数据，使用 for update 悲观锁。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from question
+    where id = #{id,jdbcType=VARCHAR} for update
+  </select>
+  <select id="unique" resultMap="questionResultMap" parameterType="com.vteba.tianxun.question.model.Question" >
+    <!--
+      WARNING - 根据params所携带条件查询唯一记录。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from question
+    <if test="_parameter != null" >
+      <include refid="model_where_clause" />
+    </if>
+  </select>
+  <select id="uniqueForUpdate" resultMap="questionResultMap" parameterType="com.vteba.tianxun.question.model.Question" >
+    <!--
+      WARNING - 根据params所携带条件查询唯一记录。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from question
+    <if test="_parameter != null" >
+      <include refid="model_where_clause" />
+    </if>
+     for update
+  </select>
+  <delete id="deleteById" parameterType="java.lang.String" >
+    <!--
+      WARNING - 根据主键删除记录。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    delete from question
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteBulks" parameterType="com.vteba.tianxun.question.model.Question" >
+    <!--
+      WARNING - 根据params所携带条件删除数据。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    delete from question
+    <if test="_parameter != null" >
+      <include refid="model_where_clause" />
+    </if>
+  </delete>
+  <insert id="save" parameterType="com.vteba.tianxun.question.model.Question" >
+    <!--
+      WARNING - 插入记录，只有非空字段才会插入到数据库。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    insert into question
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="summary != null" >
+        summary,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="asker != null" >
+        asker,
+      </if>
+      <if test="askerName != null" >
+        asker_name,
+      </if>
+      <if test="askDate != null" >
+        ask_date,
+      </if>
+      <if test="answerDate != null" >
+        answer_date,
+      </if>
+      <if test="closeDate != null" >
+        close_date,
+      </if>
+      <if test="solved != null" >
+        solved,
+      </if>
+      <if test="open != null" >
+        open,
+      </if>
+      <if test="platform != null" >
+        platform,
+      </if>
+      <if test="category != null" >
+        category,
+      </if>
+      <if test="categoryName != null" >
+        category_name,
+      </if>
+      <if test="satisfiedAnswerId != null" >
+        satisfied_answer_id,
+      </if>
+      <if test="satisfiedUserId != null" >
+        satisfied_user_id,
+      </if>
+      <if test="satisfiedUserName != null" >
+        satisfied_user_name,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null" >
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="asker != null" >
+        #{asker,jdbcType=VARCHAR},
+      </if>
+      <if test="askerName != null" >
+        #{askerName,jdbcType=VARCHAR},
+      </if>
+      <if test="askDate != null" >
+        #{askDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="answerDate != null" >
+        #{answerDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="closeDate != null" >
+        #{closeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="solved != null" >
+        #{solved,jdbcType=BIT},
+      </if>
+      <if test="open != null" >
+        #{open,jdbcType=BIT},
+      </if>
+      <if test="platform != null" >
+        #{platform,jdbcType=BIT},
+      </if>
+      <if test="category != null" >
+        #{category,jdbcType=INTEGER},
+      </if>
+      <if test="categoryName != null" >
+        #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="satisfiedAnswerId != null" >
+        #{satisfiedAnswerId,jdbcType=VARCHAR},
+      </if>
+      <if test="satisfiedUserId != null" >
+        #{satisfiedUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="satisfiedUserName != null" >
+        #{satisfiedUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countBy" parameterType="com.vteba.tianxun.question.model.Question" resultType="java.lang.Integer" >
+    <!--
+      WARNING - 根据params所携带条件计数。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    select count(*) from question
+    <if test="_parameter != null" >
+      <include refid="model_where_clause" />
+    </if>
+  </select>
+  <update id="updateBulks" parameterType="map" >
+    <!--
+      WARNING - 根据params所携带条件更新指定字段。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    update question
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null" >
+        content = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.summary != null" >
+        summary = #{record.summary,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=DECIMAL},
+      </if>
+      <if test="record.asker != null" >
+        asker = #{record.asker,jdbcType=VARCHAR},
+      </if>
+      <if test="record.askerName != null" >
+        asker_name = #{record.askerName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.askDate != null" >
+        ask_date = #{record.askDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.answerDate != null" >
+        answer_date = #{record.answerDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.closeDate != null" >
+        close_date = #{record.closeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.solved != null" >
+        solved = #{record.solved,jdbcType=BIT},
+      </if>
+      <if test="record.open != null" >
+        open = #{record.open,jdbcType=BIT},
+      </if>
+      <if test="record.platform != null" >
+        platform = #{record.platform,jdbcType=BIT},
+      </if>
+      <if test="record.category != null" >
+        category = #{record.category,jdbcType=INTEGER},
+      </if>
+      <if test="record.categoryName != null" >
+        category_name = #{record.categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.satisfiedAnswerId != null" >
+        satisfied_answer_id = #{record.satisfiedAnswerId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.satisfiedUserId != null" >
+        satisfied_user_id = #{record.satisfiedUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.satisfiedUserName != null" >
+        satisfied_user_name = #{record.satisfiedUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null" >
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="update_model_where_clause" />
+    </if>
+  </update>
+  <update id="updateById" parameterType="com.vteba.tianxun.question.model.Question" >
+    <!--
+      WARNING - 根据主键更新指定字段的数据。
+      MyBatis代码工具自动生成，不要修改！
+    -->
+    update question
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null" >
+        summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="asker != null" >
+        asker = #{asker,jdbcType=VARCHAR},
+      </if>
+      <if test="askerName != null" >
+        asker_name = #{askerName,jdbcType=VARCHAR},
+      </if>
+      <if test="askDate != null" >
+        ask_date = #{askDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="answerDate != null" >
+        answer_date = #{answerDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="closeDate != null" >
+        close_date = #{closeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="solved != null" >
+        solved = #{solved,jdbcType=BIT},
+      </if>
+      <if test="open != null" >
+        open = #{open,jdbcType=BIT},
+      </if>
+      <if test="platform != null" >
+        platform = #{platform,jdbcType=BIT},
+      </if>
+      <if test="category != null" >
+        category = #{category,jdbcType=INTEGER},
+      </if>
+      <if test="categoryName != null" >
+        category_name = #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="satisfiedAnswerId != null" >
+        satisfied_answer_id = #{satisfiedAnswerId,jdbcType=VARCHAR},
+      </if>
+      <if test="satisfiedUserId != null" >
+        satisfied_user_id = #{satisfiedUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="satisfiedUserName != null" >
+        satisfied_user_name = #{satisfiedUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
