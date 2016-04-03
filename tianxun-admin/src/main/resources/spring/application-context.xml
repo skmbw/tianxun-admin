@@ -10,6 +10,8 @@
 	
 	<import resource="application-mybatis.xml"/>
 	<import resource="application-solr.xml"/>
+	<import resource="application-redis.xml"/>
+	<import resource="application-security.xml"/>
 	
 	<!-- 默认是基于java interface代理，proxy-target-class="true"表示基于cglib代理。 expose-proxy="true"表示将aop放到AopContext中，供查询 -->
 	<aop:aspectj-autoproxy proxy-target-class="true"/>

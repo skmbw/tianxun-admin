@@ -66,7 +66,7 @@
                                     </div>
 
                                 </form>
-                                <p class="m-t"> <small>浙江中金通信息技术有限公司 版权所有 &copy; 2015</small> </p>
+                                <p class="m-t"> <small>浙江天寻信息技术有限公司 版权所有 &copy; 2015</small> </p>
                             </div>
                         </div>
                     </div>
